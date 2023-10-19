@@ -1,3 +1,4 @@
+#vitotoso
 import csv
 import datetime
 livros=[]
@@ -67,5 +68,31 @@ def Cadastrar_emprestimos(emprestimos):
     criar_emprestimo_csv()
     print("Emprestimo cadastrado com sucesso.")
     
+#DaNasser
 
-      
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Githug-o
+
+
+
+
+
+
+
+
+
+
+
+#BernardoGuerino
