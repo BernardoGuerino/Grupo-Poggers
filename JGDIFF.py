@@ -67,7 +67,57 @@ def Cadastrar_emprestimos(emprestimos):
     print("Emprestimo cadastrado com sucesso.")
     
 #DaNasser
+def criar_livro_csv():
+    gravador = csv.writer(open('arquivo_livros.csv', mode="w", newline='')) 
+    gravador.writerow(["livro","Editora","Autor"])
+    
+    for livro in livros:
+            
+            gravador.writerow([livro['Titulo'],livro['Editor'],livro['Autor'],])
+    
+def criar_pessoa_csv():
+      gravador1 = csv.writer(open('arquivo_pessoas.csv', mode="w", newline=''))
+      gravador1.writerrow(["Nome","Telefone","Email"])
 
+      for pessoa in pessoas:
+
+        gravador1.writerrow([pessoa['Nome'],pessoa['Telefone'],pessoa['Email']])
+
+def criar_emprestimo_csv():
+    gravador2 = csv.writer(open('arquivo_emprestimos.csv', mode="w", newline=''))
+    gravador2.writerrol(["Pessoa","Livro","Entrega"])
+
+    for emprestimo in emprestimos:
+          
+        gravador2.writerrow(emprestimo['Pessoa'],emprestimo['Livro'],emprestimo['Entega'])
+
+
+def deletar_livro():
+    pesquisa = input("digite o nome do livro: ")
+    for livro in livros:
+        if livro['livro'] == pesquisa:
+            livros.remove(livro)
+        else:
+                print("Livro não encontrado!")
+    criar_livro_csv()
+
+def deletar_pessoa():
+    pesquisa1 = input("Digite o seu email: ")
+    for pessoa in pessoas:
+        if pessoa['Email'] == pesquisa1:
+              pessoas.remove(pessoa)
+        else:
+             print("Pessoa não encontrada!")
+    criar_pessoa_csv()
+        
+def deletar_emprestimo():
+    pesquisa2 = input("Digite o nome do livro: ")
+    for emprestimo in emprestimos:
+        if emprestimo['Livro'] == pesquisa2:
+            emprestimos.remove[emprestimo]
+        else:
+             print("Emprestimo não encontrado!")
+    criar_emprestimo_csv()
 
 
 
@@ -166,8 +216,8 @@ def imprimir_pessoas(pessoa):
 def imprimir_emprestimos(emprestimo):
     pesquisa= input("Digite o nome do livro !")
     pesquisa= input("Digite email da pessoa em posso do livro !")
-    for emprestimo in emprestimos 
-    print(f"Email  |   Status  |   Livro  |   Detentor   |   Data emprestimo | Data devolução")
+    for emprestimo in emprestimos:
+        print(f"Email  |   Status  |   Livro  |   Detentor   |   Data emprestimo | Data devolução")
         if emprestimos['Devolucao'] < datetime.now():
             status = "Atrasado"
         else:
