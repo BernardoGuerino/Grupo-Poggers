@@ -111,38 +111,35 @@ def editar_contatos():
         else:
             print("Livro não encontrado.")
     contatos = leitor
-    criar_livro_csv()
+    criar_contato_csv()
 
 def editar_emprestimos():
     leitor = csv.DictReader(open('arquivo_livros.csv', mode="r"))
-    editcontato = input("Digite o nome do livro emprestado que deseja alterar: ")
-    opc1 = int(input("Qual informação deseja alterar?\n1 - Nome;\n2 - Telefone;\n3 - Email;\n4 - Todas.\n")) 
+    editemprestimo = input("Digite o nome do livro emprestado que deseja alterar: ")
+    opc1 = int(input("Qual informação deseja alterar?\n1 - Pessoa;\n2 - Livro;\n3 - Entrega;\n4 - Todas.\n")) 
 
     for emprestimo in leitor:
-        if emprestimo['Email'] == editcontato:
+        if emprestimo['Livro'] == editemprestimo:
             if opc1 == 1:
                 emprestimo['Nome'] = input("Nome: ")
             elif opc1 == 2:
-                emprestimo['Telefone'] = input("Telefone: ")
+                emprestimo['Livro'] = input("Livro: ") 
             elif opc1 == 3: 
-                emprestimo['Email'] = input("Email: ")         
+                dia = int(input("Digite o dia a previsão de devolução (dd): "))
+                mes = int(input("Digite o mês a previsão de devolução (mm): "))
+                ano = int(input("Digite o ano a previsão de devolução (aaaa): "))
+
+                emprestimo['Entrega'] = datetime(ano,mes,dia)
             elif opc1 == 4:             
                 emprestimo['Nome'] = input("Nome: ")
                 emprestimo['Telefone'] = input("Telefone: ")
-                emprestimo['Email'] = input("Email: ")
+                emprestimo['Email'] = datetime(ano,mes,dia)
             else:
                 print("Opção inválida!")
         else:
             print("Livro não encontrado.")
     emprestimos = leitor
-    criar_livro_csv()
-
-
-
-
-
-
-
+    criar_emprestimo_csv()
 #BernardoGuerino
 from datetime import datetime
 
