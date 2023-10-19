@@ -64,7 +64,7 @@ def Cadastrar_emprestimos(emprestimos):
         
         'Pessoa':procurar_pessoa,
         'Livro':procurar_livro,
-        'Entrega':datetime(ano,mes,dia) 
+        'Data':datetime(ano,mes,dia) 
     }
     emprestimos.append(emprestimo)
     criar_emprestimo_csv()
@@ -94,7 +94,7 @@ def criar_pessoa_csv():
 
 def criar_emprestimo_csv():
     gravador2 = csv.writer(open('arquivo_emprestimos.csv', mode="w", newline=''))
-    gravador2.writerrol(["Pessoa","Livro","Entrega"])
+    gravador2.writerrol(["Pessoa","Livro","Data"])
 
     for emprestimo in emprestimos:
           
@@ -173,7 +173,7 @@ def editar_emprestimos():
                 mes = int(input("Digite o mês a previsão de devolução (mm): "))
                 ano = int(input("Digite o ano a previsão de devolução (aaaa): "))
 
-                emprestimo['Entrega'] = datetime(ano,mes,dia)
+                emprestimo['Data'] = datetime(ano,mes,dia)
             elif opc1 == 4:             
                 emprestimo['Nome'] = input("Nome: ")
                 emprestimo['Telefone'] = input("Telefone: ")
