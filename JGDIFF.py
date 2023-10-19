@@ -182,6 +182,3 @@ def imprimir_emprestimos(emprestimo):
             print(f"{['Email']}  |    {status}  |   {emprestimos['Livro']}  |   {emprestimos['Pessoa']}   |   {emprestimos['Data']}")
 
 
-
-
-#BernardoGuerino
