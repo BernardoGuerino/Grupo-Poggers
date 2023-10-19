@@ -2,6 +2,10 @@
 import csv
 import datetime
 
+livros = []
+pessoas = []
+emprestimos = []
+
 def cadastrar_livro(livros):
     livro=input("Digite o nome do livro:  ")
     editora=input("Digite o nome da editora:  ")
@@ -31,7 +35,7 @@ def cadastrar_pessoa(pessoas):
     criar_pessoa_csv()
     print("PESSOA CADASTRADA COM SUCESSO!!!")
     print("=====================================")
-emprestimos=[]
+
 def Cadastrar_emprestimos(emprestimos):
     
     procurar_livro=input("Qual o nome do livro que vc deseja fazer o emprestimo:  ")
@@ -66,6 +70,11 @@ def Cadastrar_emprestimos(emprestimos):
     criar_emprestimo_csv()
     print("Emprestimo cadastrado com sucesso.")
     
+def main():
+    
+    livros = csv.DictReader(open('arquivo_livros.csv', mode="r"))
+    pessoas = csv.DictReader(open('arquivo_pessoas.csv', mode="r"))
+    emprestimos = csv.DictReader(open('arquivo_emprestimos.csv', mode="r"))
 #DaNasser
 def criar_livro_csv():
     gravador = csv.writer(open('arquivo_livros.csv', mode="w", newline='')) 
@@ -92,7 +101,7 @@ def criar_emprestimo_csv():
         gravador2.writerrow(emprestimo['Pessoa'],emprestimo['Livro'],emprestimo['Entega'])
 
 
-def deletar_livro():
+def deletar_livro(livros):
     pesquisa = input("digite o nome do livro: ")
     for livro in livros:
         if livro['livro'] == pesquisa:
@@ -101,7 +110,7 @@ def deletar_livro():
                 print("Livro não encontrado!")
     criar_livro_csv()
 
-def deletar_pessoa():
+def deletar_pessoa(pessoas):
     pesquisa1 = input("Digite o seu email: ")
     for pessoa in pessoas:
         if pessoa['Email'] == pesquisa1:
@@ -110,7 +119,7 @@ def deletar_pessoa():
              print("Pessoa não encontrada!")
     criar_pessoa_csv()
         
-def deletar_emprestimo():
+def deletar_emprestimo(emprestimos):
     pesquisa2 = input("Digite o nome do livro: ")
     for emprestimo in emprestimos:
         if emprestimo['Livro'] == pesquisa2:
@@ -118,18 +127,6 @@ def deletar_emprestimo():
         else:
              print("Emprestimo não encontrado!")
     criar_emprestimo_csv()
-
-
-
-
-
-
-
-
-
-
-
-
 
 #Githug-o
 def editar_livros():
@@ -188,41 +185,79 @@ def editar_emprestimos():
     emprestimos = leitor
     criar_emprestimo_csv()
 #BernardoGuerino
-from datetime import datetime
 
-livros = []
-pessoas = []
-emprestimos = []
-contatos = []
-
-
-
-def imprimir_livros(livro):
+def imprimir_livros(livros):
     pesquisa= input("Digite o nome do livro !")
     for livro in livros :
-        if livro['livro'] == pesquisa #????
-        print(f"   Título  |   Editora   |      Autor(a)  ")    
-        print(f"   {livros['Titulo']}  |   {livros['Editora']}   |   {livros['Autora']}")
+        if livro['Titulo'] == pesquisa: #????
+            print(f"   Título  |   Editora   |      Autor(a)  ")    
+            print(f"   {livro['Titulo']}  |   {livro['Editora']}   |   {livro['Autora']}")
         
-
-def imprimir_pessoas(pessoa):
+def imprimir_pessoas(pessoas):
     pesquisa= input("Digite o seu email !")
     for pessoa in pessoas :
-        if livro['livro'] == pesquisa #????
-    print(f"   |   Nome  |   Telefone   |   E-mail ")       
-    print(f"  |   {contatos['Nome']}  |   {contatos['Telefone']}   |   {contatos['Email']}")
+        if pessoa['Email'] == pesquisa: #????
+            print(f"   |   Nome  |   Telefone   |   E-mail ")       
+            print(f"  |   {pessoa['Nome']}  |   {pessoa['Telefone']}   |   {pessoa['Email']}")
         
-
-def imprimir_emprestimos(emprestimo):
-    pesquisa= input("Digite o nome do livro !")
-    pesquisa= input("Digite email da pessoa em posso do livro !")
+def imprimir_emprestimos(emprestimos):
+    print(f"Email  |   Status  |   Livro  |   Detentor   |   Data emprestimo")
     for emprestimo in emprestimos:
-        print(f"Email  |   Status  |   Livro  |   Detentor   |   Data emprestimo | Data devolução")
         if emprestimos['Devolucao'] < datetime.now():
             status = "Atrasado"
         else:
             status = "No prazo"
+        print(f"{emprestimo['Email']}  |    {status}  |   {emprestimo['Livro']}  |   {emprestimo['Pessoa']}   |   {emprestimo['Data']}")
 
-            print(f"{['Email']}  |    {status}  |   {emprestimos['Livro']}  |   {emprestimos['Pessoa']}   |   {emprestimos['Data']}")
+while True:
+    print("Bem-vinda!")
+    print("Escolha uma categoria:")
+    print("1 - Cadastro de livros")
+    print("2 - Cadastro de contatos")
+    print("3 - Gestão de empréstimos")
+    
+    opc1 = int(input(""))
+    print("")
+    
+    if opc1 == 1:
+        opc2 = int(input(""))
+        if   opc2 == 1:
+            cadastrar_livro(livros)
+        elif opc2 == 2:
+            editar_livros()
+        elif opc2 == 3:
+            imprimir_livros(livros)
+        elif opc2 == 4:
+            deletar_livro(livros)
+        else:
+            print("Opção inválida, tente novamente.")
+            print("")
 
+    elif opc1 == 2:
 
+        opc2 = int(input(""))
+        if   opc2 == 1:
+            cadastrar_pessoa(pessoas)
+        elif opc2 == 2:
+            editar_contatos()
+        elif opc2 == 3:
+            imprimir_pessoas(pessoas)
+        elif opc2 == 4:
+            deletar_pessoa(pessoas)
+        else:
+            print("Opção inválida, tente novamente.")
+            print("")
+
+    elif opc1 == 3:
+        opc2 = int(input(""))
+        if   opc2 == 1:
+            Cadastrar_emprestimos(emprestimos)
+        elif opc2 == 2:
+            editar_contatos()
+        elif opc2 == 3:
+            imprimir_emprestimos(emprestimos)
+        elif opc2 == 4:
+            deletar_emprestimo(emprestimos)
+        else:
+            print("Opção inválida, tente novamente.")
+            print("")
