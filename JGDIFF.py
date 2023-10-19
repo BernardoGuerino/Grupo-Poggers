@@ -1,9 +1,6 @@
 #vitotoso
 import csv
 import datetime
-livros=[]
-pessoas=[]
-emprestimos=[]
 
 def cadastrar_livro(livros):
     livro=input("Digite o nome do livro:  ")
