@@ -143,6 +143,44 @@ def editar_emprestimos():
 
 
 
+#BernardoGuerino
+from datetime import datetime
+
+livros = []
+pessoas = []
+emprestimos = []
+contatos = []
+
+
+
+def imprimir_livros(livro):
+    pesquisa= input("Digite o nome do livro !")
+    for livro in livros :
+        if livro['livro'] == pesquisa #????
+        print(f"   Título  |   Editora   |      Autor(a)  ")    
+        print(f"   {livros['Titulo']}  |   {livros['Editora']}   |   {livros['Autora']}")
+        
+
+def imprimir_pessoas(pessoa):
+    pesquisa= input("Digite o seu email !")
+    for pessoa in pessoas :
+        if livro['livro'] == pesquisa #????
+    print(f"   |   Nome  |   Telefone   |   E-mail ")       
+    print(f"  |   {contatos['Nome']}  |   {contatos['Telefone']}   |   {contatos['Email']}")
+        
+
+def imprimir_emprestimos(emprestimo):
+    pesquisa= input("Digite o nome do livro !")
+    pesquisa= input("Digite email da pessoa em posso do livro !")
+    for emprestimo in emprestimos 
+    print(f"Email  |   Status  |   Livro  |   Detentor   |   Data emprestimo | Data devolução")
+        if emprestimos['Devolucao'] < datetime.now():
+            status = "Atrasado"
+        else:
+            status = "No prazo"
+
+            print(f"{['Email']}  |    {status}  |   {emprestimos['Livro']}  |   {emprestimos['Pessoa']}   |   {emprestimos['Data']}")
+
 
 
 
