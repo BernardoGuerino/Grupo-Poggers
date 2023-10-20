@@ -17,7 +17,7 @@ def cadastrar_livro(livros):
         'Autor':autor  
     }
     livros.append(livro)
-    cirar_livro_csv()
+    criar_livro_csv()
     print("LIVRO CADASTRADO COM SUCESSO!!")
     print("====================================")
     
@@ -235,7 +235,7 @@ while True:
 
     elif opc1 == 2:
 
-        opc2 = int(input(""))
+        opc2 = int(input("Escolha uma opção"))
         if   opc2 == 1:
             cadastrar_pessoa(pessoas)
         elif opc2 == 2:
