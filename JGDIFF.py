@@ -82,7 +82,7 @@ def criar_livro_csv():
     
     for livro in livros:
             
-            gravador.writerow([livro['Titulo'],livro['Editor'],livro['Autor'],])
+            gravador.writerow([livro['Titulo'],livro['Editora'],livro['Autor'],])
     
 def criar_pessoa_csv():
       gravador1 = csv.writer(open('arquivo_pessoas.csv', mode="w", newline=''))
