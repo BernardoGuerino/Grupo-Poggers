@@ -218,9 +218,17 @@ while True:
     
     opc1 = int(input(""))
     print("")
-    
+
     if opc1 == 1:
+        print("-------------------")
+        print("O que deseja fazer:")
+        print("1 - Cadastrar um novo livro")
+        print("2 - Editar o cadastro de um livro")
+        print("3 - Exibir a lista de livros cadastrados")
+        print("4 - Excluir um livro dos registros")
+        print("")
         opc2 = int(input(""))
+        
         if   opc2 == 1:
             cadastrar_livro(livros)
         elif opc2 == 2:
@@ -234,8 +242,13 @@ while True:
             print("")
 
     elif opc1 == 2:
-
-        opc2 = int(input("Escolha uma opção"))
+        print("-------------------")
+        print("O que deseja fazer:")
+        print("1 - Cadastrar um novo contato")
+        print("2 - Editar o cadastro de um contato")
+        print("3 - Exibir a lista de contatos cadastrados")
+        print("4 - Excluir um contato dos registros")
+        print("")
         if   opc2 == 1:
             cadastrar_pessoa(pessoas)
         elif opc2 == 2:
@@ -249,6 +262,13 @@ while True:
             print("")
 
     elif opc1 == 3:
+        print("-------------------")
+        print("O que deseja fazer:")
+        print("1 - Registrar um novo empréstimo")
+        print("2 - Editar o registro de um empréstimo")
+        print("3 - Exibir a lista de empréstimos")
+        print("4 - Excluir um empréstimo dos registros")
+        print("")
         opc2 = int(input(""))
         if   opc2 == 1:
             Cadastrar_emprestimos(emprestimos)
